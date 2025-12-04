@@ -3,9 +3,9 @@
 void	*philosopher_routine(void *arg)
 {
 	t_philo	*philo;
+	int		should_stop;
 
 	philo = (t_philo *)arg;
-	// TODO: implement philosopher logic
 	if (philo->shared->n_philo == 1)
 	{
 		print_status(philo, "has taken a fork");
@@ -14,9 +14,12 @@ void	*philosopher_routine(void *arg)
 	}
 	while (1)
 	{
-		
+		pthread_mutex_lock(&philo->shared->state_mutex);
+		should_stop = philo->shared->stop;
+		pthread_mutex_unlock(&philo->shared->state_mutex);
+		if (should_stop)
+			break ;
 	}
-	(void)philo;
 	return (NULL);
 }
 
