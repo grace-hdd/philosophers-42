@@ -58,29 +58,6 @@ void	monitor_philosophers(t_philo *philos, t_shared *shared)
     }
 }
 
-void	*philosopher_routine(void *arg)
-{
-	t_philo	*philo;
-	int		should_stop;
-
-	philo = (t_philo *)arg;
-	if (philo->shared->n_philo == 1)
-	{
-		print_status(philo, "has taken a fork");
-		usleep(philo->shared->params.time_to_die * 1000);
-		return (NULL);
-	}
-	while (1)
-	{
-		pthread_mutex_lock(&philo->shared->state_mutex);
-		should_stop = philo->shared->stop;
-		pthread_mutex_unlock(&philo->shared->state_mutex);
-		if (should_stop)
-			break ;
-	}
-	return (NULL);
-}
-
 int	start_simulation(t_philo *philos, t_shared *shared)
 {
 	int	i;
