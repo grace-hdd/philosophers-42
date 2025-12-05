@@ -42,8 +42,10 @@ void	*philosopher_routine(void *arg)
     philo = (t_philo *)arg;
     if (philo->shared->n_philo == 1)
     {
+        print_status(philo, "is thinking");
         print_status(philo, "has taken a fork");
-        usleep(philo->shared->params.time_to_die * 1000);
+        while (!philo->shared->stop)
+            usleep(100);
         return (NULL);
     }
     while (1)
