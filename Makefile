@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRCDIR = src
 INCDIR = inc
-SRCS = $(SRCDIR)/main.c $(SRCDIR)/parsing.c $(SRCDIR)/init.c $(SRCDIR)/cleanup.c $(SRCDIR)/philo.c $(SRCDIR)/utils.c
+SRCS = $(SRCDIR)/main.c $(SRCDIR)/parsing.c $(SRCDIR)/init.c $(SRCDIR)/cleanup.c $(SRCDIR)/utils.c $(SRCDIR)/monitor.c $(SRCDIR)/routine.c
 OBJS = $(SRCS:.c=.o)
 RM = rm -f
 
