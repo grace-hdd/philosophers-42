@@ -26,15 +26,15 @@ static int	check_death(t_philo *philos, t_shared *shared)
     {
         pthread_mutex_lock(&shared->state_mutex);
         elapsed = get_time_ms() - philos[i].last_meal_ms;
-        pthread_mutex_unlock(&shared->state_mutex);
         if (elapsed > shared->params.time_to_die)
         {
-            pthread_mutex_lock(&shared->print_mutex);
+            shared->stop = 1;
             printf("%ld %d died\n", get_time_ms() - shared->start_time_ms,
                 philos[i].id);
-            pthread_mutex_unlock(&shared->print_mutex);
+            pthread_mutex_unlock(&shared->state_mutex);
             return (1);
         }
+        pthread_mutex_unlock(&shared->state_mutex);
         i++;
     }
     return (0);
@@ -42,18 +42,18 @@ static int	check_death(t_philo *philos, t_shared *shared)
 
 void	monitor_philosophers(t_philo *philos, t_shared *shared)
 {
-    while (!shared->stop)
+    while (1)
     {
         if (check_death(philos, shared))
-        {
-            shared->stop = 1;
             return ;
-        }
+        pthread_mutex_lock(&shared->state_mutex);
         if (check_all_fed(philos, shared))
         {
             shared->stop = 1;
+            pthread_mutex_unlock(&shared->state_mutex);
             return ;
         }
+        pthread_mutex_unlock(&shared->state_mutex);
         usleep(100);
     }
 }
@@ -75,6 +75,7 @@ int	start_simulation(t_philo *philos, t_shared *shared)
 		}
 		i++;
 	}
+	monitor_philosophers(philos, shared);
 	i = 0;
 	while (i < shared->n_philo)
 	{
