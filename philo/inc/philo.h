@@ -72,6 +72,7 @@ void	*philosopher_routine(void *arg);
 */
 long	get_time_ms(void);
 void	print_status(t_philo *philo, char *status);
+void	responsive_sleep(t_shared *shared, long duration_ms);
 
 /*
 ** CLEANUP

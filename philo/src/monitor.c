@@ -82,6 +82,7 @@ int	start_simulation(t_philo *philos, t_shared *shared)
 		if (pthread_create(&philos[i].thread, NULL,
 				&philosopher_routine, &philos[i]) != 0)
 			return (1);
+		usleep(200);
 		i++;
 	}
 	monitor_philosophers(philos, shared);

@@ -25,6 +25,24 @@ void	print_status(t_philo *philo, char *status)
 	pthread_mutex_unlock(&philo->shared->state_mutex);
 }
 
+void	responsive_sleep(t_shared *shared, long duration_ms)
+{
+	long	start;
+
+	start = get_time_ms();
+	while (get_time_ms() - start < duration_ms)
+	{
+		pthread_mutex_lock(&shared->state_mutex);
+		if (shared->stop)
+		{
+			pthread_mutex_unlock(&shared->state_mutex);
+			break ;
+		}
+		pthread_mutex_unlock(&shared->state_mutex);
+		usleep(500);
+	}
+}
+
 int	ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');

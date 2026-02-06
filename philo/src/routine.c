@@ -37,7 +37,7 @@ static void	eat(t_philo *philo)
 	philo->meals_eaten++;
 	pthread_mutex_unlock(&philo->shared->state_mutex);
 	print_status(philo, "is eating");
-	usleep(philo->shared->params.time_to_eat * 1000);
+	responsive_sleep(philo->shared, philo->shared->params.time_to_eat);
 }
 
 static void	release_forks(t_philo *philo)
@@ -62,7 +62,7 @@ static void	*philo_loop(t_philo *philo)
 		eat(philo);
 		release_forks(philo);
 		print_status(philo, "is sleeping");
-		usleep(philo->shared->params.time_to_sleep * 1000);
+		responsive_sleep(philo->shared, philo->shared->params.time_to_sleep);
 	}
 	return (NULL);
 }
@@ -75,7 +75,7 @@ void	*philosopher_routine(void *arg)
 	if (philo->shared->n_philo == 1)
 	{
 		print_status(philo, "has taken a fork");
-		usleep(philo->shared->params.time_to_die * 1000);
+		responsive_sleep(philo->shared, philo->shared->params.time_to_die);
 		return (NULL);
 	}
 	philo_loop(philo);
