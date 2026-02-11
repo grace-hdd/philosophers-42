@@ -10,9 +10,9 @@ The project is based on the classic Dining Philosophers Problem, a well-known sy
 
 A number of philosophers sit around a circular table.
 Each philosopher alternates between:
-🍝 Eating
-💭 Thinking
-😴 Sleeping
+- Eating
+- Thinking
+- Sleeping
 To eat, a philosopher must pick up two forks — one on the left and one on the right.
 Since forks are shared resources between neighbors, improper synchronization can lead to:
 ❌ Deadlocks
