@@ -116,4 +116,39 @@ Where:
 * Messages do not overlap
 * Death is printed within 10ms of detection
 * No data races
+---
+
+# Resources
+### Learning materials used
+- Dining philosophers explanation (Youtube)
+<a href="https://www.youtube.com/watch?v=zOpzGHwJ3MU"></a>
+- 42 Cursus guide - Philosopher
+<a href="https://42-cursus.gitbook.io/guide/3-rank-03/philosophers"></a>
+- Threads & Concurrency explanation (Youtube)
+<a href="https://www.youtube.com/watch?v=uA8X5zNOGw8"></a>
+
+### Official Documentation
+- man pthread_create
+- man pthread_join
+- man pthread_mutex_init
+- man pthread_mutex_lock
+- man pthread_mutex_unlock
+- man gettimeofday
+- man usleep
+
+### Concepts Reinforced
+- Threads lifecycle management
+- Mutex protetion of shared resources
+- Deadlock prevention strategies
+- Starvation detection
+- Race condition avoidance
+- Time-based monitoring in concurrent systems
+
+### AI Usage
+Ai tools were used responsibly to:
+- Clarify concurrency concepts (deadlock, starvation, data races)
+- Better understand pthread and mutex behavior
+- Improve documentation clarity and structure
+All synchronization logic, implementation decisions, debugging, and testing were done manually.
+Every part of the project is fully understood and explainable during evaluation
 
