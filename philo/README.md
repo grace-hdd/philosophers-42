@@ -111,8 +111,8 @@ timestamp_in_ms X is thinking
 timestamp_in_ms X died
 ```
 Where:
-- timestamp_in_ms -> time since simulation start (in ms)
-- X -> philosopher number
+- timestamp_in_ms → time since simulation start (in ms)
+- X → philosopher number
 * Messages do not overlap
 * Death is printed within 10ms of detection
 * No data races
