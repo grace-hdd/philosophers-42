@@ -24,14 +24,23 @@ Since forks are shared resources between neighbors, improper synchronization can
 ❌ Starvation
 
 The goal of this project is to design a robust, race-condition-free simulation where:
+
 Each philosopher is implemented as a separate thread
+
 Forks are protected using mutexes
+
 No philosopher dies unless the simulation rules require it
+
 Output logs are synchronized and formatted precisely
+
 Memory is properly managed (no leaks)
+
 No global variables are used
+
 The simulation ends when:
+
 A philosopher dies (fails to eat within time_to_die), or
+
 All philosophers have eaten a required number of times (if specified)
 
 🎯 Learning Objectives
