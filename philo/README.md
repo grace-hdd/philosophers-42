@@ -18,9 +18,7 @@ To eat, a philosopher must pick up two forks — one on the left and one on the 
 Since forks are shared resources between neighbors, improper synchronization can lead to:
 
 ❌ Deadlocks
-
 ❌ Data races
-
 ❌ Starvation
 
 The goal of this project is to design a robust, race-condition-free simulation where:
